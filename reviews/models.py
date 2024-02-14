@@ -23,6 +23,7 @@ class BookContributor(models.Model):
         EDITOR = 'EDT', 'Editor'
         REVIEWER = 'REV', 'Reviewer'
         OTHER = 'OTH', 'Other'
+        TRANSLATOR = 'TRA', 'Translator'
 
     book = models.ForeignKey('Book', on_delete=models.CASCADE, help_text="Book")
     contributor = models.ForeignKey(Contributor, on_delete=models.CASCADE, help_text="Contributor")
