@@ -32,6 +32,8 @@ MANIFEST
 db.sqlite3
 media/
 static/
+*.db
+*.db-journal
 
 # VS Code files
 .vscode/
