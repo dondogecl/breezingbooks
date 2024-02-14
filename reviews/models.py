@@ -9,6 +9,11 @@ class Contributor(models.Model):
     last_names = models.CharField(max_length=100, help_text="Contributor Last Names")
     email = models.EmailField(help_text="Contributor Email address")
 
+    def __str__(self):
+        """String representation of the current object"""
+        return self.first_names + " " + self.last_names
+     
+
 # BookContributor model (intermediate model)
 class BookContributor(models.Model):
     """Intermediate model for the relationship between a book and its contributors"""
@@ -27,6 +32,8 @@ class BookContributor(models.Model):
         max_length = 20
     )
 
+
+
 # Publisher model
 class Publisher(models.Model):
     """ Model for the company responsible of publishing one or 
@@ -34,6 +41,10 @@ class Publisher(models.Model):
     name = models.CharField(max_length=100, help_text="Publisher Name")
     website = models.URLField(help_text="Publisher Website")
     email = models.EmailField(help_text="Publisher Email address")
+
+    def __str__(self):
+        """String representation of the current object"""
+        return self.name
 
 
 # Book model
@@ -45,6 +56,10 @@ class Book(models.Model):
     # relationships (FK)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, help_text="Book Publisher")
     contributors = models.ManyToManyField(Contributor, through='BookContributor', help_text="Book Contributors")
+
+    def __str__(self):
+        """String representation of the current object"""
+        return self.title
 
 
 # Review model
